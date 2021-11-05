@@ -14,8 +14,8 @@ public interface ICrudRepository<T> {
 
     /**
      * * @param id -the id of the entity
-     *      * @return the obj with the specified id or null
-     *      */
+     * * @return the obj with the specified id or null
+     * */
 
     T find(Long id) throws  MyException;
 
@@ -23,6 +23,10 @@ public interface ICrudRepository<T> {
 
 
     T save( T obj) throws MyException;
+
+    /**
+       updates the changes that have been made after an add or delete operation
+     **/
 
     T update(T obj) throws MyException;
 

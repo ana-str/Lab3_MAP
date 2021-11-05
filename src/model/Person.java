@@ -2,14 +2,22 @@ package model;
 import java.util.Objects;
 
 public class Person {
-
-    String firstName;
-    String lastName;
+    public Long id;
+    public String firstName;
+    public String lastName;
 
     public Person(String firstName, String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
     }
+
+    public long getId() {
+        return id;
+    }
+    public void setId(long id) {
+        this.id = id;
+    }
+
 
     public String getFirstName() {
         return firstName;

@@ -18,6 +18,12 @@ public class PersonRepo <T extends Person>  extends InMemoryRepository<T>{
 
     @Override
     public T find(Long id) throws MyException {
+        if (id == null)
+            throw new MyException("Invalid ID");
+        for (Person person : repoList) {
+            if (person.getId() == id)
+                return (T) person;
+        }
         return null;
     }
 
@@ -28,11 +34,26 @@ public class PersonRepo <T extends Person>  extends InMemoryRepository<T>{
 
     @Override
     public T update(T obj) throws MyException {
-        return null;
+            if (obj == null)
+                throw new MyException("Invalid object");
+            for (Person person : repoList)
+                if (person.getId() == obj.getId()) {
+                    repoList.remove(person);
+                    repoList.add(obj);
+                    return null;
+            }
+        return obj;
     }
 
     @Override
     public T delete(Long id) throws MyException {
+        if (id == null)
+            throw new MyException("Invalid entity");
+        for (Person person : repoList)
+            if (person.getId() == id) {
+                repoList.remove(person);
+                return (T) person;
+            }
         return null;
     }
 }
